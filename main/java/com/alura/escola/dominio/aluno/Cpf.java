@@ -1,4 +1,4 @@
-package com.alura.escola;
+package com.alura.escola.dominio.aluno;
 
 public class Cpf {
 
