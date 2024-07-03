@@ -29,16 +29,16 @@ public class Aluno {
         this.nome = nome;
     }
 
-    public Cpf getCpf() {
-        return cpf;
+    public String getCpf() {
+        return cpf.getCpf();
     }
 
     public void setCpf(Cpf cpf) {
         this.cpf = cpf;
     }
 
-    public Email getEmail() {
-        return email;
+    public String getEmail() {
+        return email.getEndereco();
     }
 
     public void setEmail(Email email) {
