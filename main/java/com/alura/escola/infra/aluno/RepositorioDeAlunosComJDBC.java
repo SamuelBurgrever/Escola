@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.alura.escola.dominio.aluno.Aluno;
+import com.alura.escola.dominio.aluno.AlunoNaoEncontrado;
 import com.alura.escola.dominio.aluno.AlunoRepository;
 import com.alura.escola.dominio.aluno.Cpf;
 import com.alura.escola.dominio.aluno.Email;
@@ -62,6 +63,21 @@ public class RepositorioDeAlunosComJDBC implements AlunoRepository {
             Email email = new Email(rs.getString("email"));
             Aluno encontrado = new Aluno(cpf, email, nome);
 
+            Long id = rs.getLong("id");
+            sql = "SELECT ddd, numero FROM TELEFONE WHERE aluno_id = ?";
+            ps = connection.prepareStatement(sql);
+            ps.setLong(1, id);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                String numero = rs.getString("numero");
+                String ddd = rs.getString("ddd");
+                encontrado.adicionarTelefone(ddd, numero);
+            }
+
+            return encontrado;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
 
     }
