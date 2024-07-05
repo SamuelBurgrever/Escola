@@ -24,8 +24,7 @@ public class CifradorDeSenhaComMD5 implements CifradorDeSenha {
     }
 
     @Override
-    public boolean validarSenhaCifrada(String senhaCifrada, String senha
-    ) {
+    public boolean validarSenhaCifrada(String senhaCifrada, String senha) {
         return senhaCifrada.equals(cifrarSenha(senha));
     }
 
