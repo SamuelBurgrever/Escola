@@ -56,7 +56,7 @@ public class Aluno {
     }
 
     public static void main(String[] args) {
-        Aluno a = new Aluno(new Cpf("111.222.333-44"), new Email("fulano@gmail.com"), "Fulano da silva");
+        Aluno a = new Aluno(new Cpf("111.111.111-22"), new Email("fulano@gmail.com"), "Fulano da silva");
     }
 
 }
