@@ -5,6 +5,8 @@
 package com.alura.escola.aplicacao.indicacao;
 
 import com.alura.escola.dominio.aluno.Aluno;
+import com.alura.escola.dominio.aluno.Cpf;
+import com.alura.escola.dominio.aluno.Email;
 
 public class MatricularAlunoDto {
 
@@ -19,7 +21,7 @@ public class MatricularAlunoDto {
     }
 
     public Aluno crirAluno() {
-        return null;
+        return new Aluno(new Cpf(cpfAluno), new Email(emailAluno), nomeAluno);
     }
 
 }
