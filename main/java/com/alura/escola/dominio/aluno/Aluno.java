@@ -34,8 +34,8 @@ public class Aluno {
         this.nome = nome;
     }
 
-    public String getCpf() {
-        return cpf.getCpf();
+    public Cpf getCpf() {
+        return cpf;
     }
 
     public void setCpf(Cpf cpf) {
