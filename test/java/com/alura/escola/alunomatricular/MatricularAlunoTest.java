@@ -14,7 +14,7 @@ public class MatricularAlunoTest {
     @Test
     void alunoDeveriaSerPersistido() {
         RepositorioDeAlunosEmMemoria repositorio = new RepositorioDeAlunosEmMemoria();
-        MatricularAluno useCase = new MatricularAluno(new RepositorioDeAlunosEmMemoria());
+        MatricularAluno useCase = new MatricularAluno(repositorio);
 
         MatricularAlunoDto dados = new MatricularAlunoDto("Fulano", "111.111.111-22", "fulano@gmail.com");
         useCase.executa(dados);

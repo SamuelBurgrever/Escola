@@ -20,4 +20,9 @@ public class Cpf {
         this.cpf = cpf;
     }
 
+    @Override
+    public String toString() {
+        return cpf;
+    }
+
 }
