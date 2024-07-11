@@ -1,10 +1,8 @@
-package com.alura.escola;
+package com.alura.escola.dominio.aluno;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
-
-import com.alura.escola.dominio.aluno.Telefone;
 
 class TelefoneTest {
 

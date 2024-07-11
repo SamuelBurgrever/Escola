@@ -5,10 +5,10 @@ import java.util.List;
 
 import com.alura.escola.dominio.aluno.Aluno;
 import com.alura.escola.dominio.aluno.AlunoNaoEncontrado;
-import com.alura.escola.dominio.aluno.AlunoRepository;
 import com.alura.escola.dominio.aluno.Cpf;
+import com.alura.escola.dominio.aluno.RepositorioDeAlunos;
 
-public class RepositorioDeAlunosEmMemoria implements AlunoRepository {
+public class RepositorioDeAlunosEmMemoria implements RepositorioDeAlunos {
 
     private List<Aluno> matriculados = new ArrayList<>();
 
@@ -19,14 +19,15 @@ public class RepositorioDeAlunosEmMemoria implements AlunoRepository {
 
     @Override
     public Aluno buscarPorCPF(Cpf cpf) {
-
-        return this.matriculados.stream().filter(a -> a.getCpf().equals(cpf.getCpf())).findFirst().orElseThrow(() -> new AlunoNaoEncontrado(cpf));
+        return this.matriculados.stream()
+                .filter(a -> a.getCpf().equals(cpf))
+                .findFirst()
+                .orElseThrow(() -> new AlunoNaoEncontrado(cpf));
     }
 
     @Override
     public List<Aluno> listarTodosAlunosMatriculados() {
-
-        return null;
+        return this.matriculados;
     }
 
 }

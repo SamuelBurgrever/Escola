@@ -1,8 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package com.alura.escola.aplicacao.indicacao;
+package com.alura.escola.aplicacao.aluno.matricular;
 
 import com.alura.escola.dominio.aluno.Aluno;
 import com.alura.escola.dominio.aluno.Cpf;
@@ -20,8 +16,10 @@ public class MatricularAlunoDto {
         this.emailAluno = emailAluno;
     }
 
-    public Aluno crirAluno() {
-        return new Aluno(new Cpf(cpfAluno), new Email(emailAluno), nomeAluno);
+    public Aluno criarAluno() {
+        return new Aluno(
+                new Cpf(cpfAluno),
+                nomeAluno, new Email(emailAluno));
     }
 
 }

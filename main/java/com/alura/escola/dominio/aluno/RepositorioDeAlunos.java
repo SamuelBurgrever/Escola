@@ -2,7 +2,7 @@ package com.alura.escola.dominio.aluno;
 
 import java.util.List;
 
-public interface AlunoRepository {
+public interface RepositorioDeAlunos {
 
     void matricular(Aluno aluno);
 

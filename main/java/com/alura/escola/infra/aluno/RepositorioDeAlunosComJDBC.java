@@ -4,16 +4,17 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.alura.escola.dominio.aluno.Aluno;
 import com.alura.escola.dominio.aluno.AlunoNaoEncontrado;
-import com.alura.escola.dominio.aluno.AlunoRepository;
 import com.alura.escola.dominio.aluno.Cpf;
 import com.alura.escola.dominio.aluno.Email;
+import com.alura.escola.dominio.aluno.RepositorioDeAlunos;
 import com.alura.escola.dominio.aluno.Telefone;
 
-public class RepositorioDeAlunosComJDBC implements AlunoRepository {
+public class RepositorioDeAlunosComJDBC implements RepositorioDeAlunos {
 
     private Connection connection;
 
@@ -61,7 +62,7 @@ public class RepositorioDeAlunosComJDBC implements AlunoRepository {
 
             String nome = rs.getString("nome");
             Email email = new Email(rs.getString("email"));
-            Aluno encontrado = new Aluno(cpf, email, nome);
+            Aluno encontrado = new Aluno(cpf, nome, email);
 
             Long id = rs.getLong("id");
             sql = "SELECT ddd, numero FROM TELEFONE WHERE aluno_id = ?";
@@ -84,8 +85,35 @@ public class RepositorioDeAlunosComJDBC implements AlunoRepository {
 
     @Override
     public List<Aluno> listarTodosAlunosMatriculados() {
+        try {
+            String sql = "SELECT id, cpf, nome, email FROM ALUNO";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            List<Aluno> alunos = new ArrayList<>();
+            while (rs.next()) {
+                Cpf cpf = new Cpf(rs.getString("cpf"));
+                String nome = rs.getString("nome");
+                Email email = new Email(rs.getString("email"));
+                Aluno aluno = new Aluno(cpf, nome, email);
 
-        return null;
+                Long id = rs.getLong("id");
+                sql = "SELECT ddd, numero FROM TELEFONE WHERE aluno_id = ?";
+                PreparedStatement psTelefone = connection.prepareStatement(sql);
+                psTelefone.setLong(1, id);
+                ResultSet rsTelefone = psTelefone.executeQuery();
+                while (rsTelefone.next()) {
+                    String numero = rsTelefone.getString("numero");
+                    String ddd = rsTelefone.getString("ddd");
+                    aluno.adicionarTelefone(ddd, numero);
+                }
+
+                alunos.add(aluno);
+            }
+
+            return alunos;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

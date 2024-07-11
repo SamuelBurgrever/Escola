@@ -13,7 +13,7 @@ public class Aluno {
 
     private String senha;
 
-    public Aluno(Cpf cpf, Email email, String nome) {
+    public Aluno(Cpf cpf, String nome, Email email) {
         this.cpf = cpf;
         this.email = email;
         this.nome = nome;
@@ -58,8 +58,7 @@ public class Aluno {
         this.telefones = telefones;
     }
 
-    public static void main(String[] args) {
-        Aluno a = new Aluno(new Cpf("111.111.111-22"), new Email("fulano@gmail.com"), "Fulano da silva");
+    public String getSenha() {
+        return senha;
     }
-
 }

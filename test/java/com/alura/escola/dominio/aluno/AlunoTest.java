@@ -1,13 +1,9 @@
-package com.alura.escola;
+package com.alura.escola.dominio.aluno;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import com.alura.escola.dominio.aluno.Aluno;
-import com.alura.escola.dominio.aluno.Cpf;
-import com.alura.escola.dominio.aluno.Email;
 
 public class AlunoTest {
 
@@ -15,7 +11,7 @@ public class AlunoTest {
 
     @BeforeEach
     void beforeEach() {
-        this.aluno = new Aluno(new Cpf("123.456.789-00"), new Email("fulano@gmail.com"), "Fulano da silva");
+        this.aluno = new Aluno(new Cpf("123.456.789-00"), "Fulano da silva", new Email("fulano@gmail.com"));
     }
 
     @Test

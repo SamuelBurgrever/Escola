@@ -9,7 +9,7 @@ public class LogDeAlunoMatriculado extends Ouvinte {
 
     public void reageAo(Evento evento) {
 
-        String momentoFormatado = evento.momento().format(DateTimeFormatter.ofPattern("dd//mm/yyyy  hh:mm"));
+        String momentoFormatado = evento.momento().format(DateTimeFormatter.ofPattern("dd/mm/yyyy  hh:mm"));
         System.out.println(String.format("Aluno com CPF %s matriculado em: %s", ((AlunoMatriculado) evento).getCpfAluno(), momentoFormatado));
     }
 
